@@ -31,3 +31,9 @@ def countCurses(text):
 
 if __name__ == "__main__":
     print("Starting Feature Spam")
+    print(countCurses("Lol lets first try clean sentence see what happenes"))
+    print(countCurses("Now lets be nasty for a bit: damn."))
+    print(countCurses("Ok, clearly works on a single word, what about..."))
+    print(countCurses(" 'Maybe I never saw a camel, but I know a camel's cunt when I smell one' --Arya Stark"))
+    print(countCurses("Once I've seen pranks on BG3: Arsetarion, Shadowfart, pokemon muk backward is cum, etc..."))
+    print(countCurses("ok I guess this ass algo is not as fucking good as I freagging hoped for, son of a bitch."))
