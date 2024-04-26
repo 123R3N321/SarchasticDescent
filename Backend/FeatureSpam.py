@@ -27,6 +27,18 @@ def countCurses(text):
 
 ##################################################################
 
+'''
+Now handle embedding, start with basic term freq-inv docu freq (tf-idf)
+
+(I know it is not gonna work well cuz the document, 
+    i.e. each reddit comment, is too short, but per prof Sellie's request we do it anyways)
+'''
+
+# necessary for tokenization
+import nltk
+nltk.download('punkt')
+
+
 
 
 if __name__ == "__main__":
