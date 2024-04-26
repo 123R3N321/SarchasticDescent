@@ -142,7 +142,7 @@ def idf(data):
     return resArr
 
 def vecProcess(data):
-    resArr = [None]*(data.shape[0],)
+    resArr = [None]*data.shape[0]
     for i in range(resArr.shape[0]):
         resArr[i] = preprocess(data[i])
     return resArr
