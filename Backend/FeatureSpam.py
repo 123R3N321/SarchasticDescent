@@ -147,6 +147,12 @@ def vecProcess(data):
         resArr[i] = preprocess(data[i])
     return resArr
 
+def vecFlagCurses(data):
+    resArr = np.zeros((data.shape[0],))
+    for i in range(resArr.shape[0]):
+        resArr[i] += flagCurses(data[i])
+    return resArr
+
 
 if __name__ == "__main__":
     print("Starting Feature Spam")
