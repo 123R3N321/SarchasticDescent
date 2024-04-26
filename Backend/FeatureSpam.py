@@ -143,9 +143,9 @@ def idf(data):
 
 def vecProcess(data):
     resArr = [None]*data.shape[0]
-    for i in range(resArr.shape[0]):
+    for i in range(data.shape[0]):
         resArr[i] = preprocess(data[i])
-    return resArr
+    return np.array(resArr)
 
 def vecFlagCurses(data):
     resArr = np.zeros((data.shape[0],))
