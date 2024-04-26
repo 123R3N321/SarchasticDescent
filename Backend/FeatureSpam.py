@@ -156,6 +156,10 @@ def vecFlagCurses(data):
         resArr[i] += flagCurses(data[i])
     return resArr
 
+#################################Embedding for subreddit group title###########################
+'''
+approach: create our own basket
+'''
 
 if __name__ == "__main__":
     print("Starting Feature Spam")
