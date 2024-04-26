@@ -160,6 +160,8 @@ def vecFlagCurses(data):
 '''
 approach: create our own basket
 '''
+def hello():
+    print()
 
 if __name__ == "__main__":
     print("Starting Feature Spam")
