@@ -12,4 +12,4 @@ Unique values used: 100,000
 
 **Data Set Splitting**: 60% training, 20% validation, 20% test.
 
-**ML techniques**: Linear Regression, SVM, and Neural Networks.
+**ML techniques**: Linear Regression, Logistic Regression, and Neural Networks.
