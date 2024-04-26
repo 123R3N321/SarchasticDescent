@@ -138,7 +138,10 @@ def idf(data):
     resArr = np.zeros((data.shape[0],))
     count = crossDocOccurrence(data)
     for i in range(resArr.shape[0]):
-        resArr[i] = np.log(countCurses(data[i]))/count
+        if(flagCurses(resArr[i])):
+            resArr[i] = np.log(countCurses(data[i]))/count
+        else:
+            resArr[i] = 0
     return resArr
 
 def vecProcess(data):
