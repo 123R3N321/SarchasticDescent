@@ -156,31 +156,40 @@ def vecFlagCurses(data):
         resArr[i] += flagCurses(data[i])
     return resArr
     
-from collections import OrderedDict
 
-dictio = OrderedDict()
-
-dictio["a"] = 1
-dictio["b"] = 0
-dictio["c"] = 2
-
-sorted_items = sorted(dictio.items(), key=lambda x: x[1])
-
-for i in range(len(sorted_items)):
-    print(sorted_items[i])
     
 #################################Embedding for subreddit group title###########################
 '''
 approach: create our own basket
 '''
-def hello():
-    print()
+from collections import OrderedDict
+
+'''
+we return avector of same dim,
+encode values go from 0, most freq,
+to cutoff, least freq, and cutoff+1, misc others
+'''
+def subRedProcess(data, cutoff):
+    map = OrderedDict()
+    for each in data:
+        if each in map:
+            map[each] += 1
+        else:
+            map[each] = 1
+    sortedItems = [item[0] for item in sorted(map.items(), key=lambda x: x[1], reverse=True)]   #rev sort of only keys
+    resArr = np.zeros((data.shape[0],))
+    for i in range(resArr.shape[0]):
+        currRank = sortedItems.index(data[i])
+        if currRank<=cutoff:
+            resArr[i] = currRank
+        else:
+            resArr[i] = currRank+1
+    return resArr
+
+
+
+
+
 
 if __name__ == "__main__":
-    print("Starting Feature Spam")
-    print(countCurses("Lol lets first try clean sentence see what happenes"))
-    print(countCurses("Now lets be nasty for a bit: damn."))
-    print(countCurses("Ok, clearly works on a single word, what about..."))
-    print(countCurses(" 'Maybe I never saw a camel, but I know a camel's cunt when I smell one' --Arya Stark"))
-    print(countCurses("Once I've seen pranks on BG3: Arsetarion, Shadowfart, pokemon muk backward is cum, etc..."))
-    print(countCurses("ok I guess this ass algo is not as fucking good as I freagging hoped for, son of a bitch."))
+    print("Hello world")
