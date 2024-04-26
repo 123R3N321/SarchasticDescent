@@ -155,7 +155,20 @@ def vecFlagCurses(data):
     for i in range(resArr.shape[0]):
         resArr[i] += flagCurses(data[i])
     return resArr
+    
+from collections import OrderedDict
 
+dictio = OrderedDict()
+
+dictio["a"] = 1
+dictio["b"] = 0
+dictio["c"] = 2
+
+sorted_items = sorted(dictio.items(), key=lambda x: x[1])
+
+for i in range(len(sorted_items)):
+    print(sorted_items[i])
+    
 #################################Embedding for subreddit group title###########################
 '''
 approach: create our own basket
@@ -171,5 +184,3 @@ if __name__ == "__main__":
     print(countCurses(" 'Maybe I never saw a camel, but I know a camel's cunt when I smell one' --Arya Stark"))
     print(countCurses("Once I've seen pranks on BG3: Arsetarion, Shadowfart, pokemon muk backward is cum, etc..."))
     print(countCurses("ok I guess this ass algo is not as fucking good as I freagging hoped for, son of a bitch."))
-
-    print(preprocess("Hello, this a the World!"))
