@@ -183,7 +183,7 @@ def subRedProcess(data, cutoff):
         if currRank<=cutoff:
             resArr[i] = currRank
         else:
-            resArr[i] = currRank+1
+            resArr[i] = cutoff+1
     return resArr
 
 
