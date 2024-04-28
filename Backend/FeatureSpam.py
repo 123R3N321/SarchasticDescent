@@ -186,9 +186,19 @@ def subRedProcess(data, cutoff):
             resArr[i] = cutoff+1
     return resArr
 
+##########################################additional processing######################################3
+'''
+We also realized that in the original dataset, some of the data
+has wrong type/data (corruption)
+'''
+def weedOut(array, featureInd, goodType):
+    for i in range(len(array)):
+        if not isinstance(array[i][featureInd], goodType):
+            array.pop(i)
 
-
-
+#########################################3validation calculation###########################
+def validate(trueY, predY, cutoff):
+    return np.sum((trueY-predY)>cutoff)/np.sum(trueY>cutoff)
 
 
 if __name__ == "__main__":
