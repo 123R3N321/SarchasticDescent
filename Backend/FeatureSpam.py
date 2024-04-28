@@ -193,3 +193,4 @@ def subRedProcess(data, cutoff):
 
 if __name__ == "__main__":
     print("Hello world")
+    print(countCurses("FUCK FUCKING  fuck ass Fuck fucking sex"))
