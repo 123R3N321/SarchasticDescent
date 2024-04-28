@@ -190,6 +190,8 @@ def subRedProcess(data, cutoff):
 '''
 We also realized that in the original dataset, some of the data
 has wrong type/data (corruption)
+
+worst case n^2 runtime be careful
 '''
 def weedOut(array, featureInd, goodType):
     for i in range(len(array)):
@@ -198,7 +200,7 @@ def weedOut(array, featureInd, goodType):
 
 #########################################3validation calculation###########################
 def validate(trueY, predY, cutoff):
-    return np.sum(trueY>cutoff)/np.sum(predY>cutoff)
+    return 1-2*abs(np.sum(trueY>cutoff)-np.sum(predY>cutoff))
 
 
 if __name__ == "__main__":
