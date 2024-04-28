@@ -200,7 +200,7 @@ def weedOut(array, featureInd, goodType):
 
 #########################################3validation calculation###########################
 def validate(trueY, predY, cutoff):
-    return 1-2*abs(np.sum(trueY>cutoff)-np.sum(predY>cutoff))
+    return 1-2*abs(np.sum(trueY>cutoff)-np.sum(predY>cutoff))/len(trueY)
 
 
 if __name__ == "__main__":
