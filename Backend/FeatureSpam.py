@@ -199,6 +199,13 @@ def weedOut(array, featureInd, goodType):
             array.pop(i)
 
 #########################################3validation calculation###########################
+'''
+binary validation
+given true labels (binary only)
+and prediciton results,
+produce a percentage score between 0 and 1.
+linear cpu runtime, const gpu
+'''
 def validate(trueY, predY, cutoff):
     return 1-2*abs(np.sum(trueY>cutoff)-np.sum(predY>cutoff))/len(trueY)
 
