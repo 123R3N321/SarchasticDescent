@@ -68,6 +68,14 @@ def remove_stop_words(data):
             new_text = new_text + " " + w
     return new_text
 
+def count_punctuation(data):
+    symbols = "!\"#$%&()*+-./:;<=>?@[\]^_`{|}~\n"
+    count = 0
+    for i in range(len(data)):
+        if data[i] in symbols:
+            count += 1
+    return count
+
 def remove_punctuation(data):
     symbols = "!\"#$%&()*+-./:;<=>?@[\]^_`{|}~\n"
     for i in range(len(symbols)):
@@ -143,6 +151,17 @@ def idf(data):
         else:
             resArr[i] = 0
     return resArr
+
+'''
+the function below counts how many punctuation words are present in the text
+must be called before preprocessing 
+because preprocessing removes them.
+'''
+def vecCountPunctuation(data):
+    resArr = [None]*data.shape[0]
+    for i in range(data.shape[0]):
+        resArr[i] = count_punctuation(data[i])
+    return np.array(resArr)
 
 def vecProcess(data):
     resArr = [None]*data.shape[0]

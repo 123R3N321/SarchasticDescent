@@ -1,7 +1,11 @@
 from transformers import BertTokenizer, BertModel
 import torch
 
-
+'''
+This is the most rudimentarybert text embedding
+pass in entire vector containing text
+return a vector of floats between -1 and 1
+'''
 def BertSpam(data):
     # Load pre-trained BERT model and tokenizer
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
