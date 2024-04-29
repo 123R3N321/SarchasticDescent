@@ -95,7 +95,7 @@ btw, we also flag it if we see all caps
 def flagSpecial(data):
     symbols = "!\"#$%&()*+-./:;<=>?@[\]^_`{|}~\n"
     keyMap = {}
-    for i in range(len(symbols)):
+    for i in range(len(data)):
         if data[i] in symbols and data[i] not in keyMap:
             keyMap[data[i]] = [i]
         elif data[i] in symbols and data[i] in keyMap:
@@ -103,8 +103,8 @@ def flagSpecial(data):
     for each in symbols:
         if each in keyMap:
             if abs(keyMap[each][0] - keyMap[each][-1]) >1:
-                return True
-    return False
+                return 1
+    return 0
 
 
 
@@ -190,20 +190,20 @@ must be called before preprocessing
 because preprocessing removes them.
 '''
 def vecCountPunctuation(data):
-    resArr = [None]*data.shape[0]
-    for i in range(data.shape[0]):
+    resArr = [None]*len(data)
+    for i in range(len(resArr)):
         resArr[i] = count_punctuation(data[i])
     return np.array(resArr)
 
 def vecCountApostrophe(data):
-    resArr = [None] * data.shape[0]
-    for i in range(data.shape[0]):
+    resArr = [None] * len(data)
+    for i in range(len(resArr)):
         resArr[i] = count_apostrophe(data[i])
     return np.array(resArr)
 
 def vecCountSpecial(data):
-    resArr = [None] * data.shape[0]
-    for i in range(data.shape[0]):
+    resArr = [None] * len(data)
+    for i in range(len(resArr)):
         resArr[i] = flagSpecial(data[i])
     return np.array(resArr)
 
@@ -276,3 +276,9 @@ def validateLinear(trueY, predY, cutoff):
 if __name__ == "__main__":
     print("Hello world")
     print(countCurses("FUCK FUCKING  fuck ass Fuck fucking sex"))
+
+text = ["hello hello","this is *funny*","what about...?","and we need 'need' bert!"]
+
+print(vecCountPunctuation(text))
+print(vecCountApostrophe(text))
+print(vecCountSpecial(text))
