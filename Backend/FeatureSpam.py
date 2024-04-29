@@ -84,6 +84,38 @@ def remove_punctuation(data):
     data = np.char.replace(data, ',', '')
     return data
 
+'''
+ok this is the hard one
+We need to detect the presence of uppercase
+inside words, when they are not at the beginning of a sentence or
+word
+
+btw, we also flag it if we see all caps
+'''
+def flagSpecial(data):
+    symbols = "!\"#$%&()*+-./:;<=>?@[\]^_`{|}~\n"
+    keyMap = {}
+    for i in range(len(symbols)):
+        if data[i] in symbols and data[i] not in keyMap:
+            keyMap[data[i]] = [i]
+        elif data[i] in symbols and data[i] in keyMap:
+            keyMap[data[i]].append(i)
+    for each in symbols:
+        if each in keyMap:
+            if abs(keyMap[each][0] - keyMap[each][-1]) >1:
+                return True
+    return False
+
+
+
+def count_apostrophe(data):
+    symbol = ""''
+    count = 0
+    for i in range(len(data)):
+        if data[i] in symbol:
+            count += 1
+    return count
+
 def remove_apostrophe(data):
     return np.char.replace(data, "'", "")
 
@@ -163,6 +195,19 @@ def vecCountPunctuation(data):
         resArr[i] = count_punctuation(data[i])
     return np.array(resArr)
 
+def vecCountApostrophe(data):
+    resArr = [None] * data.shape[0]
+    for i in range(data.shape[0]):
+        resArr[i] = count_apostrophe(data[i])
+    return np.array(resArr)
+
+def vecCountSpecial(data):
+    resArr = [None] * data.shape[0]
+    for i in range(data.shape[0]):
+        resArr[i] = flagSpecial(data[i])
+    return np.array(resArr)
+
+
 def vecProcess(data):
     resArr = [None]*data.shape[0]
     for i in range(data.shape[0]):
@@ -225,9 +270,8 @@ and prediciton results,
 produce a percentage score between 0 and 1.
 linear cpu runtime, const gpu
 '''
-def validate(trueY, predY, cutoff):
+def validateLinear(trueY, predY, cutoff):
     return 1-2*abs(np.sum(trueY>cutoff)-np.sum(predY>cutoff))/len(trueY)
-
 
 if __name__ == "__main__":
     print("Hello world")
